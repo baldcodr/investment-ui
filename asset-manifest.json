@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/investment-ui/static/css/main.d1b05096.chunk.css",
+    "main.js": "/investment-ui/static/js/main.b6bd10c3.chunk.js",
+    "main.js.map": "/investment-ui/static/js/main.b6bd10c3.chunk.js.map",
+    "runtime-main.js": "/investment-ui/static/js/runtime-main.8f699b0a.js",
+    "runtime-main.js.map": "/investment-ui/static/js/runtime-main.8f699b0a.js.map",
+    "static/js/2.997f74b0.chunk.js": "/investment-ui/static/js/2.997f74b0.chunk.js",
+    "static/js/2.997f74b0.chunk.js.map": "/investment-ui/static/js/2.997f74b0.chunk.js.map",
+    "index.html": "/investment-ui/index.html",
+    "precache-manifest.2c68e4388cf7043b9df6d4add05be78e.js": "/investment-ui/precache-manifest.2c68e4388cf7043b9df6d4add05be78e.js",
+    "service-worker.js": "/investment-ui/service-worker.js",
+    "static/css/main.d1b05096.chunk.css.map": "/investment-ui/static/css/main.d1b05096.chunk.css.map",
+    "static/js/2.997f74b0.chunk.js.LICENSE.txt": "/investment-ui/static/js/2.997f74b0.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8f699b0a.js",
+    "static/js/2.997f74b0.chunk.js",
+    "static/css/main.d1b05096.chunk.css",
+    "static/js/main.b6bd10c3.chunk.js"
+  ]
+}
