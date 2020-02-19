@@ -22,6 +22,8 @@ import { mainListItems, secondaryListItems } from "./listItems";
 import Chart from "./Chart";
 import Deposits from "./Deposits";
 import Orders from "./Orders";
+import Avatar from "@material-ui/core/Avatar";
+import InboxIcon from "@material-ui/icons/Inbox";
 
 function Copyright() {
   return (
@@ -160,6 +162,16 @@ export default function Dashboard() {
           <IconButton color="inherit">
             <Badge badgeContent={4} color="secondary">
               <NotificationsIcon />
+            </Badge>
+          </IconButton>
+          <IconButton color="inherit">
+            <Badge badgeContent={3} color="secondary">
+              <InboxIcon />
+            </Badge>
+          </IconButton>
+          <IconButton color="inherit">
+            <Badge color="secondary">
+              <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
             </Badge>
           </IconButton>
         </Toolbar>
