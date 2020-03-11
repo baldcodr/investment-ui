@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Orders() {
+export default function Transactions() {
   const classes = useStyles();
   return (
     <React.Fragment>
@@ -39,11 +39,21 @@ export default function Orders() {
       <Table size="small">
         <TableHead>
           <TableRow>
-            <TableCell>Date</TableCell>
-            <TableCell>Stock</TableCell>
-            <TableCell>Unit</TableCell>
-            <TableCell align="right">Amount</TableCell>
-            <TableCell align="right">Account Manager</TableCell>
+            <TableCell>
+              <b>Date</b>
+            </TableCell>
+            <TableCell>
+              <b>Stock</b>
+            </TableCell>
+            <TableCell>
+              <b>Unit</b>
+            </TableCell>
+            <TableCell align="right">
+              <b>Amount</b>
+            </TableCell>
+            <TableCell align="right">
+              <b>Account Manager</b>
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

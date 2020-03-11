@@ -17,6 +17,9 @@ import MoreIcon from "@material-ui/icons/MoreVert";
 // import "./NavBar.css";
 
 const useStyles = makeStyles(theme => ({
+  toolbarMargin: {
+    ...theme.mixins.toolbar
+  },
   grow: {
     flexGrow: 1
   },
@@ -162,7 +165,7 @@ export default function PrimarySearchAppBar() {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="fixed">
+      <AppBar position="static">
         <Toolbar>
           <IconButton
             edge="start"
