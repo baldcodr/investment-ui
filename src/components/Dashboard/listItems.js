@@ -12,17 +12,20 @@ import AssignmentIcon from "@material-ui/icons/Assignment";
 import Link from "@material-ui/core/Link";
 // import Avatar from "@material-ui/core/Avatar";
 import Avatar from "./ImageAvatar";
+import ListItemLink from "@material-ui/core/ListItem";
 
 export const mainListItems = (
   <div>
-    <div>
+    <ListItem>
       <Avatar />
-    </div>
+    </ListItem>
     <ListItem button>
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
-      <ListItemText primary="Dashboard" />
+      <ListItemLink href="/dashboard">
+        <ListItemText primary="Dashboard" />
+      </ListItemLink>
     </ListItem>
     <ListItem button>
       <ListItemIcon>

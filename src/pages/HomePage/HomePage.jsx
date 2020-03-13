@@ -99,7 +99,7 @@ export default function HomePage() {
               className={classes.topText}
               gutterBottom
             >
-              Investment is Now Easier with Apel
+              Capital Market Investment is Now Easier with Apel
             </Typography>
             <Typography
               variant="h6"

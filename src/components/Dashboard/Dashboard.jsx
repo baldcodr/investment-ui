@@ -21,6 +21,7 @@ import MailIcon from "@material-ui/icons/Mail";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import Footer from "../Footer/Footer";
 import DashboardPage from "./DashboardPage";
+import ProductList from "./DashboardPage";
 
 const drawerWidth = 240;
 
@@ -279,7 +280,9 @@ export default function Dashboard() {
       {/* Main Dashboard */}
 
       <main className={classes.content}>
-        <DashboardPage />
+        {/* <DashboardPage /> */}
+        <ProductList />
+
         <Footer />
       </main>
     </div>

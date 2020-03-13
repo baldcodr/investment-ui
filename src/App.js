@@ -1,6 +1,5 @@
-import React from "react";
+import React, { Component } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import NavBar from "./components/NavBar/NavBar";
 import HomePage from "./pages/HomePage/HomePage";
 import "./components/Grid/Grid";
 import SignInSide from "./pages/SignIn/SignIn";
@@ -11,7 +10,14 @@ import productList from "./components/ProductList/ProductList";
 import theme from "./ui/Theme";
 import { ThemeProvider } from "@material-ui/styles";
 
-class App extends React.Component {
+class App extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      currentUser: null
+    };
+  }
   render() {
     return (
       <ThemeProvider theme={theme}>
