@@ -8,18 +8,22 @@ function preventDefault(event) {
   event.preventDefault();
 }
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   depositContext: {
-    flex: 1
+    fontSize: "10px"
+  },
+  money: {
+    fontFamily: "Questrial",
+    color: "theme.palette.primary"
   }
-});
+}));
 
 export default function Deposits() {
   const classes = useStyles();
   return (
     <React.Fragment>
-      <Title>Recent Deposit</Title>
-      <Typography component="p" variant="h4">
+      <Title>Cash Balance</Title>
+      <Typography variant="h4" className={classes.money}>
         ₦3,000,024.00
       </Typography>
 

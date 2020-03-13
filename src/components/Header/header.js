@@ -3,14 +3,8 @@ import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import { makeStyles } from "@material-ui/core/styles";
-// import Link from "react-router-dom";
-// import { green } from "@material-ui/core/colors";
-import MenuIcon from "@material-ui/icons/Menu";
-import Menu from "@material-ui/icons/Menu";
-import MenuItem from "@material-ui/core/MenuItem";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 import MenuPopupState from "./ProductMenu";
-import Link from "@material-ui/core/Link";
 import popupState from "./ProductMenu";
 
 const useStyles = makeStyles(theme => ({
