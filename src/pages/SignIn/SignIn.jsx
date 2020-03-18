@@ -11,7 +11,7 @@ import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import Header from "../../components/Header/header";
+import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 
 const useStyles = makeStyles(theme => ({
@@ -66,7 +66,7 @@ export default function SignInSide() {
             <Typography component="h1" variant="h5">
               Sign in
             </Typography>
-            <form className={classes.form} noValidate>
+            <form action="/dashboard" className={classes.form} noValidate>
               <TextField
                 variant="outlined"
                 margin="normal"

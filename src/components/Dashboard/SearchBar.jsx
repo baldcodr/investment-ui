@@ -88,7 +88,13 @@ export default function SearchAppBar() {
               inputProps={{ "aria-label": "search" }}
             />
           </div>
-          <Button style={{ backgroundColor: "#38ef7d", color: "white" }}>
+          <Button
+            style={{
+              backgroundColor: "#38ef7d",
+              color: "white",
+              marginLeft: "auto"
+            }}
+          >
             Search
           </Button>
         </Toolbar>

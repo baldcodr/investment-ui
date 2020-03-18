@@ -5,89 +5,39 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Drawer from "@material-ui/core/Drawer";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
+import List from "@material-ui/core/List";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import Badge from "@material-ui/core/Badge";
 import MenuIcon from "@material-ui/icons/Menu";
-import ArrowLeft from "@material-ui/icons/ArrowLeft";
+import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
+import { mainListItems } from "./listItems";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import MoreIcon from "@material-ui/icons/MoreVert";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
-import PropTypes from "prop-types";
-import Box from "@material-ui/core/Box";
+import Footer from "../Footer/Footer";
 import DashboardPage from "./DashboardPage";
 import AllProduct from "./AllProduct";
-import Avatar from "./ImageAvatar";
-import Footer from "../Footer/Footer";
-import DashboardIcon from "@material-ui/icons/Dashboard";
-import SettingsIcon from "@material-ui/icons/Settings";
-import HelpIcon from "@material-ui/icons/Help";
-import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import PeopleIcon from "@material-ui/icons/People";
-import BarChartIcon from "@material-ui/icons/BarChart";
-import Account from "./Account";
-import TransactionHistory from "./TransactionHistory";
-import Settings from "./Settings";
-import Help from "./Help";
 
-const drawerWidth = 240;
+const drawerWidth = 250;
 
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <Typography
-      component="div"
-      role="tabpanel"
-      hidden={value !== index}
-      id={`vertical-tabpanel-${index}`}
-      aria-labelledby={`vertical-tab-${index}`}
-      {...other}
-    >
-      {value === index && <Box p={3}>{children}</Box>}
-    </Typography>
-  );
-}
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.any.isRequired,
-  value: PropTypes.any.isRequired
-};
-
-function a11yProps(index) {
-  return {
-    id: `vertical-tab-${index}`,
-    "aria-controls": `vertical-tabpanel-${index}`
-  };
-}
 const useStyles = makeStyles(theme => ({
   root: {
-    display: "inherit"
+    display: "flex"
   },
   toolbar: {
     paddingRight: 24 // keep right padding when drawer closed
   },
   toolbarIcon: {
     display: "flex",
-    alignItems: "left",
+    alignItems: "center",
     justifyContent: "flex-end",
     padding: "0 8px",
     ...theme.mixins.toolbar
-  },
-  tabs: {
-    borderRight: `1px solid ${theme.palette.divider}`,
-    align: "left",
-    labelIcon: "horizontal"
-  },
-  tabItem: {
-    alignContent: "left"
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
@@ -97,7 +47,7 @@ const useStyles = makeStyles(theme => ({
     })
   },
   appBarShift: {
-    marginLeft: 0,
+    marginLeft: drawerWidth,
     width: `calc(100% - ${drawerWidth}px)`,
     transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
@@ -156,12 +106,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function Dashboard() {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState(0);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+  const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -250,108 +195,59 @@ export default function Dashboard() {
     </Menu>
   );
   return (
-    <React.Fragment>
-      <div className={classes.root}>
-        <CssBaseline />
-        <AppBar
-          position="absolute"
-          className={clsx(classes.appBar, open && classes.appBarShift)}
-        >
-          <Toolbar className={classes.toolbar}>
-            <IconButton
-              edge="start"
-              color="inherit"
-              aria-label="open drawer"
-              onClick={handleDrawerOpen}
-              className={clsx(
-                classes.menuButton,
-                open && classes.menuButtonHidden
-              )}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography
-              component="h1"
-              variant="h6"
-              color="inherit"
-              noWrap
-              className={classes.title}
-            >
-              Dashboard
-            </Typography>
+    <div className={classes.root}>
+      <CssBaseline />
+      <AppBar
+        position="absolute"
+        className={clsx(classes.appBar, open && classes.appBarShift)}
+      >
+        <Toolbar className={classes.toolbar}>
+          <IconButton
+            edge="start"
+            color="inherit"
+            aria-label="open drawer"
+            onClick={handleDrawerOpen}
+            className={clsx(
+              classes.menuButton,
+              open && classes.menuButtonHidden
+            )}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography
+            component="h1"
+            variant="h6"
+            color="inherit"
+            noWrap
+            className={classes.title}
+          >
+            Dashboard
+          </Typography>
 
-            <div className={classes.grow} />
-            <div className={classes.sectionDesktop}>
-              <IconButton
-                aria-label="show 17 new notifications"
-                color="inherit"
-              >
-                <Badge badgeContent={17} color="secondary">
-                  <NotificationsIcon />
-                </Badge>
-              </IconButton>
-              <IconButton
-                edge="end"
-                aria-label="account of current user"
-                aria-controls={menuId}
-                aria-haspopup="true"
-                onClick={handleProfileMenuOpen}
-                color="inherit"
-              >
-                <AccountCircle />
-              </IconButton>
-            </div>
-          </Toolbar>
-        </AppBar>
-        <Drawer
-          variant="temporary"
-          classes={{
-            paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose)
-          }}
-          open={open}
-        >
-          <div className={classes.toolbarIcon}>
-            <IconButton onClick={handleDrawerClose}>
-              <ArrowLeft fontSize="large" />
+          <div className={classes.grow} />
+          <div className={classes.sectionDesktop}>
+            <IconButton aria-label="show 4 new mails" color="inherit">
+              <Badge badgeContent={4} color="secondary">
+                <MailIcon />
+              </Badge>
+            </IconButton>
+            <IconButton aria-label="show 17 new notifications" color="inherit">
+              <Badge badgeContent={17} color="secondary">
+                <NotificationsIcon />
+              </Badge>
+            </IconButton>
+            <IconButton
+              edge="end"
+              aria-label="account of current user"
+              aria-controls={menuId}
+              aria-haspopup="true"
+              onClick={handleProfileMenuOpen}
+              color="inherit"
+            >
+              <AccountCircle />
             </IconButton>
           </div>
-          <span className={classes.tabItem}>
-            <Avatar />
-          </span>
-          <Tabs
-            orientation="vertical"
-            variant="scrollable"
-            value={value}
-            onChange={handleChange}
-            aria-label="Vertical tabs example"
-            className={classes.tabs}
-          >
-            <Tab
-              className={classes.tabItem}
-              icon={<DashboardIcon />}
-              label="Dashboard"
-              {...a11yProps(0)}
-            />
-            <Tab
-              icon={<ShoppingCartIcon />}
-              label="All Products"
-              {...a11yProps(1)}
-            />
-            <Tab icon={<PeopleIcon />} label="Account" {...a11yProps(2)} />
-            <Tab icon={<SettingsIcon />} label="Settings" {...a11yProps(3)} />
-            <Tab
-              icon={<BarChartIcon />}
-              label="Transaction History"
-              {...a11yProps(4)}
-            />
-            <Tab icon={<HelpIcon />} label="Help" {...a11yProps(5)} />
-          </Tabs>
-        </Drawer>
-        <Divider />
-
-        <main className={classes.content} xs={12} md={4} lg={3}>
-          <div className={classes.root}>
-            {/* <div className={classes.sectionMobile}>
+          <div className={classes.sectionMobile}>
             <IconButton
               aria-label="show more"
               aria-controls={mobileMenuId}
@@ -361,29 +257,34 @@ export default function Dashboard() {
             >
               <MoreIcon />
             </IconButton>
-          </div> */}
-            <TabPanel value={value} index={0} xs={12} md={4} lg={3}>
-              <DashboardPage />
-            </TabPanel>
-            <TabPanel value={value} index={1}>
-              <AllProduct />
-            </TabPanel>
-            <TabPanel value={value} index={2}>
-              <Account />
-            </TabPanel>
-            <TabPanel value={value} index={3}>
-              <Settings />
-            </TabPanel>
-            <TabPanel value={value} index={4}>
-              <TransactionHistory />
-            </TabPanel>
-            <TabPanel value={value} index={5}>
-              <Help />
-            </TabPanel>
           </div>
-        </main>
-      </div>
-      <Footer />
-    </React.Fragment>
+        </Toolbar>
+      </AppBar>
+      <Drawer
+        variant="permanent"
+        classes={{
+          paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose)
+        }}
+        open={open}
+      >
+        <div className={classes.toolbarIcon}>
+          <IconButton onClick={handleDrawerClose}>
+            <ChevronLeftIcon />
+          </IconButton>
+        </div>
+        <Divider />
+        <List>{mainListItems}</List>
+        <Divider />
+      </Drawer>
+
+      {/* Main Dashboard */}
+
+      <main className={classes.content}>
+        <DashboardPage />
+        <AllProduct />
+
+        <Footer />
+      </main>
+    </div>
   );
 }

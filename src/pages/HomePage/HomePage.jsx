@@ -6,9 +6,8 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-// import Link from "@material-ui/core/Link";
 import Product from "../../components/Product/Product";
-import Header from "../../components/Header/header";
+import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 
 const useStyles = makeStyles(theme => ({
@@ -60,7 +59,7 @@ export default function HomePage() {
 
   const [products, setProduct] = useState([
     {
-      id: 2334,
+      id: 1,
       name: "Treasury Bills",
       market: "equity",
       description: "Nigerian Treasury Bills",
@@ -68,17 +67,38 @@ export default function HomePage() {
         "https://apel.com.ng/wp-content/uploads/2019/04/thinkstockphoto.jpg"
     },
     {
-      id: 2984,
-      name: "Apel Investment Note",
+      id: 2,
+      name: "A. I. Note",
       market: "multiple",
-      description: "Flexible Investment Product",
+      description: "Flexible Investment",
       image: "https://apel.com.ng/wp-content/uploads/2019/04/grow-wealth.png"
     },
     {
-      id: 23544,
+      id: 3,
       name: "Equities",
       market: "equity",
       description: "Nigerian Bonds",
+      image: "https://apel.com.ng/wp-content/uploads/2019/04/wealth-mgt.png"
+    },
+    {
+      id: 4,
+      name: "ATTS",
+      market: "equity",
+      description: "Nigerian Bonds",
+      image: "https://apel.com.ng/wp-content/uploads/2019/04/wealth-mgt.png"
+    },
+    {
+      id: 5,
+      name: "ACET",
+      market: "equity",
+      description: "Child Trust",
+      image: "https://apel.com.ng/wp-content/uploads/2019/04/wealth-mgt.png"
+    },
+    {
+      id: 6,
+      name: "Euro Bond",
+      market: "equity",
+      description: "European Bonds",
       image: "https://apel.com.ng/wp-content/uploads/2019/04/wealth-mgt.png"
     }
   ]);

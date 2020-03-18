@@ -6,7 +6,7 @@ import SignInSide from "./pages/SignIn/SignIn";
 import SignUp from "./pages/SignUp/SignUp";
 import "./App.css";
 import Dashboard from "./components/Dashboard/Dashboard";
-import productList from "./components/ProductList/ProductList";
+import AllProduct from "./components/Dashboard/AllProduct";
 import theme from "./ui/Theme";
 import { ThemeProvider } from "@material-ui/styles";
 
@@ -27,7 +27,8 @@ class App extends Component {
             <Route path="/SignUp" component={SignUp} />
             <Route path="/SignIn" component={SignInSide} />
             <Route path="/Dashboard" component={Dashboard} />
-            <Route path="/productlist" component={productList} />
+            {/* <Route path="/productlist" component={productList} /> */}
+            <Route path="/product" component={AllProduct} />
           </Switch>
         </BrowserRouter>
       </ThemeProvider>
