@@ -11,6 +11,7 @@ import createMuiTheme from "../../ui/Theme";
 function preventDefault(event) {
   event.preventDefault();
 }
+const primary = createMuiTheme.palette.primary.main;
 
 const useStyles = makeStyles(theme => ({
   depositContext: {
@@ -18,7 +19,7 @@ const useStyles = makeStyles(theme => ({
   },
   money: {
     fontFamily: "Questrial",
-    color: theme.palette.primary
+    color: primary
   },
   perfomance: {
     position: "relative",
@@ -33,7 +34,7 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     position: "static",
     justifyContent: "space-between",
-    color: createMuiTheme.palette.primary
+    color: primary
   }
 }));
 

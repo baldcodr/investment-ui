@@ -2,7 +2,7 @@ import React from "react";
 import clsx from "clsx";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Drawer from "@material-ui/core/Drawer";
+import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -303,7 +303,7 @@ export default function Dashboard() {
             </div>
           </Toolbar>
         </AppBar>
-        <Drawer
+        <SwipeableDrawer
           variant="temporary"
           classes={{
             paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose)
@@ -346,7 +346,7 @@ export default function Dashboard() {
             />
             <Tab icon={<HelpIcon />} label="Help" {...a11yProps(5)} />
           </Tabs>
-        </Drawer>
+        </SwipeableDrawer>
         <Divider />
 
         <main className={classes.content} xs={12} md={4} lg={3}>

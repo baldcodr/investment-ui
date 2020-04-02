@@ -44,3 +44,7 @@ footer {
 h3 {
   font-family: "Righteous", cursive;
 }
+a:hover,
+a {
+  text-decoration: none;
+}

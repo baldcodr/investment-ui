@@ -11,9 +11,9 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1
   },
   paper: {
-    padding: theme.spacing(1),
-    margin: "auto",
-    maxWidth: 500
+    padding: theme.spacing(2),
+    marginBottom: theme.spacing(2),
+    display: "flex"
   },
   image: {
     width: 128,
@@ -74,7 +74,6 @@ export default function PortfolioProduct() {
           </Grid>
         </Grid>
       </Paper>
-      <div></div>
       <Paper className={classes.paper}>
         <Grid container spacing={2}>
           <Grid item>

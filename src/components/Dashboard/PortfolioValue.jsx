@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
   },
   money: {
     fontFamily: "Questrial",
-    color: theme.palette.primary
+    color: createMuiTheme.palette.primary.main
   },
   perfomance: {
     position: "relative",
@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
     display: "flex",
     position: "static",
     justifyContent: "space-between",
-    color: "#53de2a"
+    color: createMuiTheme.palette.primary.main
   }
 }));
 

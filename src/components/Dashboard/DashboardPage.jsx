@@ -8,7 +8,7 @@ import Paper from "@material-ui/core/Paper";
 import CashBalance from "./CashBalance";
 import Transactions from "./Transactions";
 import { PortfolioChart, PortfolioSummary } from "./PortfolioCharts";
-import PortfolioProduct from "../ProductList/PortfolioProducts";
+import PortfolioProduct from "./PortfolioProducts";
 import Title from "../Dashboard/Title";
 import PortfolioValue from "./PortfolioValue";
 // import ProductList from "../ProductList/ProductList";

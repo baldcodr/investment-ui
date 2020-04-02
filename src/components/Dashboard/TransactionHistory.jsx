@@ -20,6 +20,7 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import FilterListIcon from "@material-ui/icons/FilterList";
 import SearchAppBar from "./SearchBar";
 import Container from "@material-ui/core/Container";
+import Title from "./Title";
 
 function createData(Description, Units, AccountNumber, Amount) {
   return { Description, Units, AccountNumber, Amount };
@@ -70,7 +71,7 @@ function stableSort(array, comparator) {
 const headCells = [
   {
     id: "Description",
-    numeric: true,
+    numeric: false,
     disablePadding: false,
     label: "Description"
   },
@@ -108,12 +109,12 @@ function EnhancedTableHead(props) {
     <TableHead>
       <TableRow>
         <TableCell padding="checkbox">
-          <Checkbox
+          {/* <Checkbox
             indeterminate={numSelected > 0 && numSelected < rowCount}
             checked={rowCount > 0 && numSelected === rowCount}
             onChange={onSelectAllClick}
             inputProps={{ "aria-label": "select all desserts" }}
-          />
+          /> */}
         </TableCell>
         {headCells.map(headCell => (
           <TableCell
@@ -191,7 +192,7 @@ const EnhancedTableToolbar = props => {
         </Typography>
       ) : (
         <Typography className={classes.title} variant="h6" id="tableTitle">
-          Transaction History
+          <Title>Transaction History</Title>
         </Typography>
       )}
 
@@ -308,7 +309,7 @@ export default function EnhancedTable() {
     <Container>
       <div className={classes.root}>
         {/* Search Bar */}
-        <SearchAppBar xs={12} />
+        {/* <SearchAppBar xs={12} /> */}
         <Paper className={classes.paper}>
           <EnhancedTableToolbar numSelected={selected.length} />
           <TableContainer>

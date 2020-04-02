@@ -15,7 +15,9 @@ import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    display: "flex"
+    display: "flex",
+    marginLeft: "auto",
+    color: "secondary"
   },
   tabContainer: {
     marginLeft: "auto",
@@ -79,7 +81,7 @@ function Header() {
 
   const tabs = (
     <React.Fragment>
-      <Tabs className={classes.tabContainer}>
+      <Tabs className={classes.root}>
         <Tab
           ref={anchorRef}
           aria-controls={open ? "menu-list-grow" : undefined}

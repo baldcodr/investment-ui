@@ -5,12 +5,15 @@ import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
+import FormLabel from "@material-ui/core/FormLabel";
+import FormControl from "@material-ui/core/FormControl";
+import FormGroup from "@material-ui/core/FormGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import Checkbox from "@material-ui/core/Checkbox";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Link from "@material-ui/core/Link";
 import Typography from "@material-ui/core/Typography";
@@ -19,7 +22,7 @@ import Paper from "@material-ui/core/Paper";
 import Deposits from "./Deposits";
 import Transactions from "./Transactions";
 import { PortfolioChart, PortfolioSummary } from "./PortfolioCharts";
-import PortfolioProduct from "../ProductList/PortfolioProducts";
+import PortfolioProduct from "./PortfolioProducts";
 import Title from "../Dashboard/Title";
 // import ProductList from "../ProductList/ProductList";
 
@@ -44,268 +47,237 @@ const useStyles = makeStyles(theme => ({
   paper: {
     padding: theme.spacing(2),
     display: "flex",
-    maxWidth: "50%"
+    paddingRight: theme.spacing(4),
+    marginRight: theme.spacing(4)
   },
   fixedHeight: {
     height: 240
   },
   contain: {
-    display: "flex"
+    display: "flex",
+    [theme.breakpoints.down("md")]: {
+      display: "block"
+    }
+  },
+  formControl: {
+    display: "block"
   }
 }));
 
 export default function Account() {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(true);
-  const [gender, setGender] = React.useState("");
+  const [state, setState] = React.useState({
+    message: true,
+    email: false,
+    pushNotification: false
+  });
 
-  const inputLabel = React.useRef(null);
-  const [labelWidth, setLabelWidth] = React.useState(0);
-  React.useEffect(() => {
-    setLabelWidth(inputLabel.current.offsetWidth);
-  }, []);
-
-  const handleChange = event => {
-    setGender(event.target.value);
+  const handleChange = name => event => {
+    setState({ ...state, [name]: event.target.checked });
   };
 
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const { message, email, pushNotification } = state;
+  const error = [message, email, pushNotification].filter(v => v).length !== 2;
 
   return (
     <React.Fragment>
       <div className={classes.appBarSpacer} />
       <Container maxWidth="lg" className={classes.container}>
-        <Title>Customer Profile</Title>
+        <Title>Notification/KYC Settings</Title>
 
         <div className={classes.contain}>
           <div className={classes.paper}>
-            <form action="#" className={classes.form} noValidate>
-              <Grid container spacing={2} xs={12} sm={12} md={12} lg={12}>
-                <Grid item xs={12} sm={12}>
-                  <TextField
-                    autoComplete="fname"
-                    name="firstName"
-                    variant="outlined"
-                    required
-                    fullWidth
-                    id="firstName"
-                    label="First Name"
-                    autoFocus
-                  />
-                </Grid>
-                <Grid item xs={12} sm={12}>
-                  <TextField
-                    autoComplete="mname"
-                    name="middleName"
-                    variant="outlined"
-                    required
-                    fullWidth
-                    id="middleName"
-                    label="Middle Name"
-                    autoFocus
-                  />
-                </Grid>
-                <Grid item xs={12} sm={12}>
-                  <TextField
-                    variant="outlined"
-                    required
-                    fullWidth
-                    id="lastName"
-                    label="Last Name"
-                    name="lastName"
-                    autoComplete="lname"
-                  />
-                </Grid>
-                <Grid item xs={12} sm={12} md={6} lg={6}>
-                  <TextField
-                    variant="outlined"
-                    required
-                    fullWidth
-                    id="phone"
-                    label="Phone Number"
-                    name="phone"
-                    autoComplete="phone"
-                  />
-                </Grid>
-                <Grid item xs={12} sm={12} md={6} lg={6}>
-                  <TextField
-                    variant="outlined"
-                    required
-                    fullWidth
-                    id="email"
-                    label="Email Address"
-                    name="email"
-                    autoComplete="email"
-                  />
-                </Grid>
-
-                <Grid item xs={12}>
-                  <TextField
-                    variant="outlined"
-                    multiline
-                    required
-                    fullWidth
-                    name="address"
-                    label="Address"
-                    type="text"
-                    id="outlined-multiline-static"
-                    rows="4"
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    variant="outlined"
-                    required
-                    fullWidth
-                    name="state"
-                    label="state"
-                    type="state"
-                    id="state"
-                    autoComplete="state"
-                  />
-                </Grid>
-
-                <Grid item xs={12}>
+            <div className={classes.formControl}>
+              <FormControl component="fieldset" className={classes.formControl}>
+                <FormLabel component="legend">Notification</FormLabel>
+                <FormGroup>
                   <FormControlLabel
                     control={
-                      <Checkbox value="allowExtraEmails" color="primary" />
+                      <Checkbox
+                        checked={message}
+                        onChange={handleChange("message")}
+                        value="message"
+                      />
                     }
-                    label="I want to receive inspiration, marketing promotions and updates via email."
+                    label="Push Notification"
                   />
-                </Grid>
-                <Grid item xs={12}>
-                  <Button
-                    type="submit"
-                    variant="contained"
-                    color="primary"
-                    className={classes.submit}
-                    xs={6}
-                  >
-                    Save
-                  </Button>
-                </Grid>
-              </Grid>
-            </form>
-          </div>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={email}
+                        onChange={handleChange("email")}
+                        value="email"
+                      />
+                    }
+                    label="Email"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={pushNotification}
+                        onChange={handleChange("pushNotification")}
+                        value="pushNotification"
+                      />
+                    }
+                    label="Push Notification"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={pushNotification}
+                        onChange={handleChange("pushNotification")}
+                        value="pushNotification"
+                      />
+                    }
+                    label="Text"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={pushNotification}
+                        onChange={handleChange("pushNotification")}
+                        value="pushNotification"
+                      />
+                    }
+                    label="Phone Call"
+                  />
+                </FormGroup>
+                <FormHelperText>Be careful</FormHelperText>
+              </FormControl>
+            </div>
 
+            <div className={classes.formControl}>
+              <FormControl
+                required
+                fullWidth
+                component="fieldset"
+                className={classes.formControl}
+              >
+                <FormLabel component="legend">Messages</FormLabel>
+                <FormGroup>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={message}
+                        onChange={handleChange("message")}
+                        value="message"
+                      />
+                    }
+                    label="Email"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={email}
+                        onChange={handleChange("email")}
+                        value="email"
+                      />
+                    }
+                    label="Push Notification"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={pushNotification}
+                        onChange={handleChange("pushNotification")}
+                        value="pushNotification"
+                      />
+                    }
+                    label="Text"
+                  />
+                </FormGroup>
+              </FormControl>
+            </div>
+          </div>
+          {/* KYC SECTION */}
           <div>
             <form action="#" className={classes.form} noValidate>
-              <Grid container spacing={2}>
-                <Typography component="p" variant="p">
-                  Reset Password
-                </Typography>
-                <Grid item xs={12}>
+              <Grid container spacing={2} xs={12} sm={12} md={12} lg={12}>
+                {/* Upload Document Section */}
+                <Grid item xs={12} sm={12}>
+                  <Grid>
+                    <Typography component="p" variant="p" size="small">
+                      International Passport | National ID Card | Voter's Card |
+                      Driver's License
+                    </Typography>
+                  </Grid>
                   <TextField
+                    name="id-doc"
                     variant="outlined"
                     required
+                    type="file"
+                    id="id-doc"
                     fullWidth
-                    name="old-password"
-                    label="Old password"
-                    type="password"
-                    id="old-password"
-                    autoComplete="current-password"
-                  />
+                    autoFocus
+                  ></TextField>
                 </Grid>
-
-                <Grid item xs={12}>
-                  <TextField
-                    variant="outlined"
-                    required
-                    fullWidth
-                    name="password"
-                    label="Password"
-                    type="password"
-                    id="password"
-                    autoComplete="current-password"
-                  />
-                </Grid>
-
-                <Grid item xs={12}>
-                  <TextField
-                    variant="outlined"
-                    required
-                    fullWidth
-                    name="password"
-                    label="Password Again"
-                    type="password"
-                    id="password"
-                    autoComplete="current-password"
-                  />
-                </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} sm={12}>
                   <Button
-                    type="submit"
                     variant="contained"
                     color="primary"
                     className={classes.submit}
                     xs={6}
+                    endIcon={<CloudUploadIcon />}
                   >
-                    Update
+                    Upload
                   </Button>
                 </Grid>
-              </Grid>
-            </form>
-            <hr />
-            <form action="#" className={classes.form} noValidate>
-              <Grid container spacing={2}>
-                <Typography component="p" variant="p">
-                  Other Information
-                </Typography>
-                <Grid item xs={12}>
-                  <Typography component="p" variant="p">
-                    Date of Birth
-                  </Typography>
+                {/* Upload Document Section */}
+
+                {/* Upload Document Section */}
+                <Grid item xs={12} sm={12}>
+                  <Grid>
+                    <Typography component="p" variant="p" size="small">
+                      Utility Bill
+                    </Typography>
+                  </Grid>
                   <TextField
+                    name="utility-bill"
                     variant="outlined"
                     required
+                    type="file"
+                    id="id-doc"
                     fullWidth
-                    name="dob"
-                    type="date"
-                    id="date"
-                  />
+                    autoFocus
+                  ></TextField>
                 </Grid>
-
-                <Grid item xs={12}>
-                  <FormControl
-                    variant="outlined"
-                    className={classes.formControl}
-                    fullWidth
-                  >
-                    <InputLabel
-                      ref={inputLabel}
-                      id="demo-simple-select-outlined-label"
-                    >
-                      Gender
-                    </InputLabel>
-                    <Select
-                      labelId="demo-simple-select-outlined-label"
-                      id="demo-simple-select-outlined"
-                      value={gender}
-                      onChange={handleChange}
-                      labelWidth={labelWidth}
-                    >
-                      <MenuItem value="">
-                        <em>None</em>
-                      </MenuItem>
-                      <MenuItem value={10}>Male</MenuItem>
-                      <MenuItem value={20}>Female</MenuItem>
-                      <MenuItem value={30}>Other</MenuItem>
-                    </Select>
-                  </FormControl>
-                </Grid>
-
-                <Grid item xs={12}>
+                <Grid item xs={12} sm={12}>
                   <Button
-                    type="submit"
                     variant="contained"
                     color="primary"
                     className={classes.submit}
                     xs={6}
+                    endIcon={<CloudUploadIcon />}
                   >
-                    Update
+                    Upload
+                  </Button>
+                </Grid>
+                {/* Upload Document Section */}
+                <Grid item xs={12} sm={12}>
+                  <Grid>
+                    <Typography component="p" variant="p" size="small">
+                      Passport Photograph
+                    </Typography>
+                  </Grid>
+                  <TextField
+                    name="id-doc"
+                    variant="outlined"
+                    required
+                    type="file"
+                    id="id-doc"
+                    fullWidth
+                    autoFocus
+                  ></TextField>
+                </Grid>
+                <Grid item xs={12} sm={12}>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    className={classes.submit}
+                    xs={6}
+                    endIcon={<CloudUploadIcon />}
+                  >
+                    Upload
                   </Button>
                 </Grid>
               </Grid>
